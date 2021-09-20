@@ -13,7 +13,7 @@ Usage
 
 1. Please create additonal backups of all relevant data, this is a rather complicated process. Things can go wrong.
 
-2. Create fixture dumps for both instances. Remember the instances need to be fully upgraded to the latest version.
+2. Create fixture dumps for both instances. Remember the instances need to be fully upgraded to the latest version. The following commands need to be executed in the `rdmo-app` directory of the primary and secondary instance.
 
     ```bash
     (env) ~/rdmo-primary$ ./manage.py dumpdata > primary.json
