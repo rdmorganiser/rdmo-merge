@@ -9,10 +9,10 @@ import logging
 
 def main():
 
-    parser = argparse.ArgumentParser(description='Merge two RDMO data dumps by rewriting the second fixtures.')
-    parser.add_argument('primary_fixtures', help='The path to the primary data dump, this data will be kept.')
-    parser.add_argument('secondary_fixtures', help='The path to the secondary data dump, this data will be replaced.')
-    parser.add_argument('output_fixtures', help='The path to the secondary data dump, this data will be replaced.')
+    parser = argparse.ArgumentParser(description='Merge two RDMO data dumps by rewriting the secondary fixtures into an output dump.')
+    parser.add_argument('primary_fixtures', help='The path to the primary data dump.')
+    parser.add_argument('secondary_fixtures', help='The path to the secondary data dump.')
+    parser.add_argument('output_fixtures', help='The path to the output data dump.')
     parser.add_argument('--log-level', default='WARNING', help='Log level to be used, e.g. INFO')
     args = parser.parse_args()
 
@@ -97,7 +97,7 @@ class Processor():
         })
         self.fix_relations('questions.questionset', foreign_keys={
             'section': 'questions.section',
-            'questionset': 'questions.questionset',
+            # 'questionset': 'questions.questionset',
             'attribute': 'domain.attribute'
         }, many_to_many={
             'conditions': 'conditions.condition'
@@ -105,7 +105,7 @@ class Processor():
         self.fix_relations('questions.question', foreign_keys={
             'questionset': 'questions.questionset',
             'attribute': 'domain.attribute',
-            'default_option': 'options.optionset'
+            # 'default_option': 'options.optionset'
         }, many_to_many={
             'conditions': 'conditions.condition',
             'optionsets': 'options.optionset'
